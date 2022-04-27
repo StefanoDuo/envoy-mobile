@@ -115,6 +115,13 @@ public:
   static envoy_netconf_t setPreferredNetwork(envoy_network_t network);
 
   /**
+   * Sets whether future calls to refreshDns should drain connections after subsequent DNS
+   * resolution.
+   * @param enanbled, whether to enable connection drain after DNS refresh.
+   */
+  void setDrainOnDnsRefreshEnabled(bool enabled);
+
+  /**
    * Sets whether subsequent calls for upstream socket options may leverage options that bind
    * to specific network interfaces.
    * @param enabled, whether to enable interface binding.

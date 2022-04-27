@@ -171,6 +171,10 @@ void Configurator::reportNetworkUsage(envoy_netconf_t configuration_key, bool ne
   }
 }
 
+void Configurator::setDrainOnDnsRefreshEnabled(bool enabled) {
+  enable_drain_on_dns_refresh_ = enabled;
+}
+
 void Configurator::setInterfaceBindingEnabled(bool enabled) { enable_interface_binding_ = enabled; }
 
 void Configurator::refreshDns(envoy_netconf_t configuration_key) {
