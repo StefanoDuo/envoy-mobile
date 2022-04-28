@@ -56,8 +56,27 @@ android_configure(
     name = "local_config_android",
     sdk_api_level = 30,
     ndk_api_level = 21,
-    build_tools_version = "30.0.2"
+    build_tools_version = "30.0.3"
 )
 
 load("@local_config_android//:android_configure.bzl", "android_workspace")
 android_workspace()
+
+load("@com_google_protobuf//:protobuf_deps.bzl", "protobuf_deps")
+protobuf_deps()
+
+#ATS_COMMIT = "149d38c6feb19b0e505cb4ea014c35795e069e45"
+local_repository(
+    name = "android_test_support",
+    #strip_prefix = "android-test-%s" % ATS_COMMIT,
+    #urls = ["https://github.com/android/android-test/archive/%s.tar.gz" % ATS_COMMIT],
+    path = "/usr/local/google/home/stefanoduo/repos/android-test",
+)
+load("@android_test_support//:repo.bzl", "android_test_repositories")
+android_test_repositories()
+
+new_local_repository(
+  name = "emulator",
+  path = "/usr/local/google/home/stefanoduo/Android/Sdk/system-images/android-26/google_apis_playstore/x86/",
+  build_file = "emulator.BUILD",
+)

@@ -90,3 +90,14 @@ envoy_mobile_android_test(
         "//library/kotlin/io/envoyproxy/envoymobile:envoy_lib",
     ],
 )
+
+filegroup(
+    name = "emulator_images",
+    srcs = [
+        "kernel-ranchu",
+        "ramdisk.img",
+        "source.properties",
+        "system.img",
+        "userdata.img",
+    ],
+)
